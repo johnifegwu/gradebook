@@ -8,6 +8,8 @@ namespace GradeBook
 
         private double low;
 
+        private char letter;
+
         public Statistics(double avarage, double high, double low)
         {
             this.avarage = avarage;
@@ -57,6 +59,18 @@ namespace GradeBook
                 {
                     this.low = value;
                 }
+            }
+        }
+
+        public char Letter
+        {
+            get
+            {
+                return this.letter;
+            }
+            set
+            {
+                this.letter = value;
             }
         }
     }

@@ -10,15 +10,55 @@ namespace GradeBook
         {
             var book =  new Book("Mike's Grade Book");
 
-            book.AddGrade(89.1);
-            book.AddGrade(90.5);
-            book.AddGrade(77.5);
+            Console.WriteLine("Enter a grade in Letters or number 0 to 100 or Q to quit:");
 
-            var stat = book.GetStats();
+            while(true)
+            {
+                string grade = Console.ReadLine();
+                var x = double.MinValue;
 
-            Console.WriteLine($"The highest grade is {stat.High:N1}");
-            Console.WriteLine($"The avarage grade is {stat.Avarage:N1}");
-            Console.WriteLine($"The lowest grade is {stat.Low:N1}");
+                if(double.TryParse(grade, out x))
+                {
+                    try
+                    {
+                        book.AddGrade(x);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                    
+
+                }else if(grade != string.Empty)
+                {
+
+                    if(grade == "q" || grade == "Q")
+                    {
+                        if(book.HasGrades())
+                        {
+
+                             var stat = book.GetStats();
+
+                             Console.WriteLine($"The highest grade is {stat.High:N1}");
+                             Console.WriteLine($"The avarage grade is {stat.Avarage:N1}");
+                             Console.WriteLine($"The lowest grade is {stat.Low:N1}");
+                             Console.WriteLine($"The letter grade is {stat.Letter}");
+
+                        }
+                       
+                        break;
+                    }
+                    else
+                    {
+
+                        char d;
+                        char.TryParse(grade, out d);
+                        book.AddGrade(d);
+
+                    }
+
+                }
+            }
 
         }
     }

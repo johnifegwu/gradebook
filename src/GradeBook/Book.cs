@@ -14,6 +14,40 @@ namespace GradeBook
             this.name = name;
         }
 
+        public void AddGrade(char grade)
+        {
+            switch(grade)
+            {
+                case 'A':
+                this.AddGrade(90);
+                break;
+
+                case 'B':
+                this.AddGrade(80);
+                break;
+
+                case 'C':
+                this.AddGrade(70);
+                break;
+
+                case 'D':
+                this.AddGrade(60);
+                break;
+
+                case 'P':
+                this.AddGrade(50);
+                break;
+
+                case 'F':
+                this.AddGrade(40);
+                break;
+
+                default:
+                this.AddGrade(0);
+                break;
+            }
+        }
+
         public void AddGrade(double grade)
         {
             if(grade >= 0 && grade <= 100){
@@ -21,7 +55,7 @@ namespace GradeBook
             }
             else
             {
-                Console.WriteLine("Invalid value."); 
+               throw new ArgumentException($"Invalid {nameof(grade)}"); 
             }    
         }
 
@@ -39,6 +73,34 @@ namespace GradeBook
 
             result.Avarage /= grades.Count;
 
+            switch(result.Avarage)
+            {
+                case var l when l >= 90:
+                result.Letter = 'A';
+                break;
+
+                case var l when l >= 80:
+                result.Letter = 'B';
+                break;
+
+                case var l when l >= 70:
+                result.Letter = 'C';
+                break;
+
+                case var l when l >= 60:
+                result.Letter = 'D';
+                break;
+
+                case var l when l >= 50:
+                result.Letter = 'P';
+                break;
+
+                default:
+                result.Letter = 'F';
+                break;
+
+            }
+
             return result;
 
         }
@@ -53,6 +115,18 @@ namespace GradeBook
             {
                 if(value != string.Empty)
                    this.name = value;
+            }
+        }
+
+        public bool HasGrades()
+        {
+            if(grades.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
