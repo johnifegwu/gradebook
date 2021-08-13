@@ -23,7 +23,7 @@ namespace GradeBook
             }
             set
             {
-                if(value > 0)
+                if(value >= 0)
                 {
                     this.avarage = value;
                 }

@@ -24,5 +24,16 @@ namespace GradeBook.Tests
             Assert.Equal(77.5, result.Low, 1);
             
         }
+
+        [Fact]
+        public void AddGradeBiggerOrLessThanHundredFails()
+        {
+            var book = new Book("Grades");
+            book.AddGrade(102);
+            book.AddGrade(100);
+            book.AddGrade(-1);
+
+            Assert.Equal(100, book.GetStats().High);
+        }
     }
 }
