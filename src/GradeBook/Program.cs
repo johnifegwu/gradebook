@@ -10,7 +10,11 @@ namespace GradeBook
         {
             var book =  new Book("Mike's Grade Book");
 
-            Console.WriteLine("Enter a grade in Letters or number 0 to 100 or R for result & Q to quit:");
+            book.GradeAdded += OnGradeAdded;
+
+            var desc = "\nEnter a grade in Letters or numbers 0 to 100 or R for result & Q to quit:";
+
+            Console.WriteLine(desc);
 
             while(true)
             {
@@ -38,14 +42,22 @@ namespace GradeBook
                         {
 
                              var stat = book.GetStats();
-
+                             try
+                             {
+                                // book.Name = "";
+                                 Console.WriteLine($"The book is named {book.Name}");
+                             }
+                             catch(Exception ex)
+                             {
+                                 Console.WriteLine(ex.Message);
+                             }
                              Console.WriteLine($"The highest grade is {stat.High:N1}");
                              Console.WriteLine($"The avarage grade is {stat.Avarage:N1}");
                              Console.WriteLine($"The lowest grade is {stat.Low:N1}");
                              Console.WriteLine($"The letter grade is {stat.Letter}");
 
                              book.ClrGrades();
-                             Console.WriteLine("\nEnter a grade in Letters or number 0 to 100 or R for result & Q to quit:");
+                             Console.WriteLine(desc);
 
                         }
                        
@@ -72,6 +84,11 @@ namespace GradeBook
                 }
             }
 
+        }
+
+        static void OnGradeAdded(object sender, EventArgs args)
+        {
+            Console.WriteLine("A grade was added.");
         }
     }
 }

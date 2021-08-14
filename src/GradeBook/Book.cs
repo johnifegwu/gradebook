@@ -3,15 +3,49 @@ using System.Collections.Generic;
 
 namespace GradeBook
 {
-    public class Book
-    {
-        private List<double> grades;
-        private string name;
+    
+    public delegate void GradeAddedDelegate(object sender, EventArgs args);
 
-        public Book(string name)
+    public class NamedObject
+    {
+         private string name;
+
+         public NamedObject(string name)
+         {
+             this.name = name;
+         }
+         
+         public string Name
+         {
+            get
+            {
+                return this.name;
+            }
+            set
+            {
+                if(!string.IsNullOrEmpty(value))
+                {
+                     this.name = value;
+                }
+                else
+                {
+                    throw new Exception($"Invalid name {value}");
+                }
+                  
+            }
+        }
+
+    }
+    public class Book : NamedObject
+    {
+
+        public event GradeAddedDelegate GradeAdded;
+
+        private List<double> grades;
+
+        public Book(string name): base(name)
         {
             grades = new List<double>();
-            this.name = name;
         }
 
         public void AddGrade(char grade)
@@ -52,6 +86,11 @@ namespace GradeBook
         {
             if(grade >= 0 && grade <= 100){
                 grades.Add(grade);
+                // Raise Grade Added Event here..
+                if(GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -103,19 +142,6 @@ namespace GradeBook
 
             return result;
 
-        }
-
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-            set
-            {
-                if(value != string.Empty)
-                   this.name = value;
-            }
         }
 
         public bool HasGrades()
