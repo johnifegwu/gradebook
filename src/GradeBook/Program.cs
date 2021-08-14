@@ -10,7 +10,7 @@ namespace GradeBook
         {
             var book =  new Book("Mike's Grade Book");
 
-            Console.WriteLine("Enter a grade in Letters or number 0 to 100 or Q to quit:");
+            Console.WriteLine("Enter a grade in Letters or number 0 to 100 or R for result & Q to quit:");
 
             while(true)
             {
@@ -32,7 +32,7 @@ namespace GradeBook
                 }else if(grade != string.Empty)
                 {
 
-                    if(grade == "q" || grade == "Q")
+                    if(grade == "r" || grade == "R")
                     {
                         if(book.HasGrades())
                         {
@@ -44,17 +44,29 @@ namespace GradeBook
                              Console.WriteLine($"The lowest grade is {stat.Low:N1}");
                              Console.WriteLine($"The letter grade is {stat.Letter}");
 
+                             book.ClrGrades();
+                             Console.WriteLine("\nEnter a grade in Letters or number 0 to 100 or R for result & Q to quit:");
+
                         }
                        
-                        break;
                     }
-                    else
+                    else if(grade == "q" || grade == "Q")
+                    {
+
+                         break;
+
+                    }
+                    else if(grade.Length == 1)
                     {
 
                         char d;
                         char.TryParse(grade, out d);
                         book.AddGrade(d);
 
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input.");
                     }
 
                 }

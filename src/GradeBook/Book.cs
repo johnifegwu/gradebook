@@ -129,5 +129,10 @@ namespace GradeBook
                 return false;
             }
         }
+
+        public void ClrGrades()
+        {
+            this.grades.Clear();
+        }
     }
 }
