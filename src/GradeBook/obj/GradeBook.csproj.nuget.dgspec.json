@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JOHN\\gradebook\\src\\GradeBook\\GradeBook.csproj": {}
+    "C:\\Users\\JOHN\\gradebook\\src\\gradebook\\GradeBook.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JOHN\\gradebook\\src\\GradeBook\\GradeBook.csproj": {
+    "C:\\Users\\JOHN\\gradebook\\src\\gradebook\\GradeBook.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JOHN\\gradebook\\src\\GradeBook\\GradeBook.csproj",
+        "projectUniqueName": "C:\\Users\\JOHN\\gradebook\\src\\gradebook\\GradeBook.csproj",
         "projectName": "GradeBook",
-        "projectPath": "C:\\Users\\JOHN\\gradebook\\src\\GradeBook\\GradeBook.csproj",
+        "projectPath": "C:\\Users\\JOHN\\gradebook\\src\\gradebook\\GradeBook.csproj",
         "packagesPath": "C:\\Users\\JOHN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JOHN\\gradebook\\src\\GradeBook\\obj\\",
+        "outputPath": "C:\\Users\\JOHN\\gradebook\\src\\gradebook\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -45,6 +45,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

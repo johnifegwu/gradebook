@@ -45,6 +45,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -94,8 +100,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\JOHN\\gradebook\\src\\gradebook\\GradeBook.csproj": {
-                "projectPath": "C:\\Users\\JOHN\\gradebook\\src\\gradebook\\GradeBook.csproj"
+              "C:\\Users\\JOHN\\gradebook\\src\\gradebook\\gradebook.csproj": {
+                "projectPath": "C:\\Users\\JOHN\\gradebook\\src\\gradebook\\gradebook.csproj"
               }
             }
           }
