@@ -1,9 +1,0 @@
-C:\Users\JOHN\gradebook\WindowsFormsApp1\obj\Debug\bookDBApp.csproj.AssemblyReference.cache
-C:\Users\JOHN\gradebook\WindowsFormsApp1\obj\Debug\GradeBook.Data.Properties.Resources.resources
-C:\Users\JOHN\gradebook\WindowsFormsApp1\obj\Debug\bookDBApp.csproj.GenerateResource.cache
-C:\Users\JOHN\gradebook\WindowsFormsApp1\obj\Debug\bookDBApp.csproj.CoreCompileInputs.cache
-C:\Users\JOHN\gradebook\WindowsFormsApp1\bin\Debug\bookDBApp.dll.config
-C:\Users\JOHN\gradebook\WindowsFormsApp1\bin\Debug\bookDBApp.dll
-C:\Users\JOHN\gradebook\WindowsFormsApp1\bin\Debug\bookDBApp.pdb
-C:\Users\JOHN\gradebook\WindowsFormsApp1\obj\Debug\bookDBApp.dll
-C:\Users\JOHN\gradebook\WindowsFormsApp1\obj\Debug\bookDBApp.pdb

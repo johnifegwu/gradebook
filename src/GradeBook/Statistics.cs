@@ -1,3 +1,5 @@
+using System;
+
 namespace GradeBook
 {
     public class Statistics
@@ -10,26 +12,34 @@ namespace GradeBook
 
         private char letter;
 
+        private double sum;
+
+        private int count;
+
         public Statistics(double avarage, double high, double low)
         {
             this.avarage = avarage;
             this.high = high;
             this.low = low;
+            this.count = 0;
+            this.sum = 0.0;
+        }
+
+        public void Add(double grade)
+        {
+            sum += grade;
+            count += 1;
+            this.high = Math.Max(grade, this.high);
+            this.low = Math.Min(grade, this.low);
         }
 
         public double Avarage
         { 
             get
             {
-                return this.avarage;
+                return sum / count;
             }
-            set
-            {
-                if(value >= 0)
-                {
-                    this.avarage = value;
-                }
-            }
+         
         }
 
         public double High
@@ -38,13 +48,7 @@ namespace GradeBook
             {
                 return this.high;
             }
-            set
-            {
-                if(value >= 0 && value <= 100)
-                {
-                    this.high = value;
-                }
-            }
+            
         }
 
         public double Low
@@ -53,25 +57,37 @@ namespace GradeBook
             {
                 return this.low;
             }
-            set
-            {
-                if(value >= 0 && value <= 100)
-                {
-                    this.low = value;
-                }
-            }
+           
         }
 
         public char Letter
         {
             get
             {
-                return this.letter;
+                switch (this.Avarage)
+                {
+                    case var l when l >= 90:
+                        return 'A';
+                       
+                    case var l when l >= 80:
+                        return 'B';
+                       
+                    case var l when l >= 70:
+                        return 'C';
+                       
+                    case var l when l >= 60:
+                        return 'D';
+                       
+                    case var l when l >= 50:
+                       return 'P';
+                       
+                    default:
+                        return 'F';
+                       
+                }
+
             }
-            set
-            {
-                this.letter = value;
-            }
+
         }
     }
 }

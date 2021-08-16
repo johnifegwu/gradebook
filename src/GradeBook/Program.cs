@@ -8,20 +8,25 @@ namespace GradeBook
     {
         static void Main(string[] args)
         {
-
             //Create Book
-            while(true)
+            CreateBook();
+
+        }
+
+        private static void CreateBook()
+        {
+            while (true)
             {
                 Book book;
 
                 Console.WriteLine($"Type 'New' to begin, 'S' to search or 'Q' to quit.");
                 var str = Console.ReadLine();
 
-                if(!string.IsNullOrEmpty(str))
+                if (!string.IsNullOrEmpty(str))
                 {
-                    if(str.ToLower() == "new")
+                    if (str.ToLower() == "new")
                     {
-                        while(true)
+                        while (true)
                         {
                             Console.WriteLine($"Enter Student's Name or Q to quit:");
                             var input = Console.ReadLine();
@@ -30,7 +35,7 @@ namespace GradeBook
                             {
                                 book = new Book(input);
                                 book.GradeAdded += OnGradeAdded;
-                                
+
                                 var desc = "\nEnter a grade in Letters or numbers 0 to 100 or R for result & Q to quit:";
 
                                 Console.WriteLine(desc);
@@ -91,51 +96,55 @@ namespace GradeBook
                                     }
                                 }
                             }
-                            else if(!string.IsNullOrEmpty(input) && input.ToLower() == "q")
+                            else if (!string.IsNullOrEmpty(input) && input.ToLower() == "q")
                             {
                                 break;
                             }
 
                         }
-                    }    
-                    else if(str.ToLower() == "s")
+                    }
+                    else if (str.ToLower() == "s")
                     {
-                        while(true)
-                        {
-                            Console.WriteLine($"Enter a Student Name to search or 'Q' to quit:");
-                            var text = Console.ReadLine();
-                            if (!string.IsNullOrEmpty(text) && text.ToLower() != "q")
-                            {
-                                Console.WriteLine("Fetching Grades from the database, please wait....");
-                                var bk = Dalc.Dalc.book().GetBook(text);
-                                if(bk != null)
-                                {
-                                    Console.WriteLine($"Grade for {bk.Name}:");
-                                    foreach(double grade in bk.Grades)
-                                    {
-                                        Console.WriteLine($"{grade:N1}");
-                                    }
-                                    PrintBookSummary(bk);
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Record not found...");
-                                }
-                            }
-                            else if(!string.IsNullOrEmpty(text) && text.ToLower() == "q")
-                            {
-                                break;
-                            }
-                        }
+                        SearchBook();
 
                     }
-                    else if(str.ToLower() == "q")
+                    else if (str.ToLower() == "q")
                     {
                         break;
                     }
                 }
             }
+        }
 
+        private static void SearchBook()
+        {
+            while (true)
+            {
+                Console.WriteLine($"Enter a Student Name to search or 'Q' to quit:");
+                var text = Console.ReadLine();
+                if (!string.IsNullOrEmpty(text) && text.ToLower() != "q")
+                {
+                    Console.WriteLine("Fetching Grades from the database, please wait....");
+                    var bk = Dalc.Dalc.book().GetBook(text);
+                    if (bk != null)
+                    {
+                        Console.WriteLine($"Grade for {bk.Name}:");
+                        foreach (double grade in bk.Grades)
+                        {
+                            Console.WriteLine($"{grade:N1}");
+                        }
+                        PrintBookSummary(bk);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Record not found...");
+                    }
+                }
+                else if (!string.IsNullOrEmpty(text) && text.ToLower() == "q")
+                {
+                    break;
+                }
+            }
         }
 
         static void PrintBookSummary(Book book)
