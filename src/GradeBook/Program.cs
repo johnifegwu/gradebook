@@ -6,11 +6,39 @@ namespace GradeBook
 
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) //[Guid("A60D9DB8-65FD-49EB-9D72-4E799928867B")] // pwd: /gxKDQnKUXkdZPVhe1aqZGQij37Uh7v1hfsrLGaMcD0fHjNa3UiyFh03n8sHu+Bc/G7RVsHYhBoBSNamjuolXHcIZS1YGd+XSAbM1c4SVMk=
         {
+            Console.WriteLine($"Enter the message you want to encrypt.");
+            var msg = Console.ReadLine();
+
+            Console.WriteLine($"Enter enter your password.");
+            var pwd = Console.ReadLine();
+
+            var encMsg = EncryptString(msg, pwd);
+
+            var decMsg = DecryptString(encMsg, pwd);
+
+            Console.WriteLine($"Your encrypted message is:");
+            Console.WriteLine($"{encMsg}");
+
+            Console.WriteLine($"Your decrypted message is:");
+
+            Console.WriteLine($"{decMsg}");
+
+
             //Create Book
             CreateBook();
 
+        }
+
+        private static string EncryptString(string msg, string pwd)
+        {
+            return Security.SimpleEncryptWithPassword(msg, pwd);
+        }
+
+        private static string DecryptString(string msg, string pwd)
+        {
+            return Security.SimpleDecryptWithPassword(msg, pwd);
         }
 
         private static void CreateBook()
